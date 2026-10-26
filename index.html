@@ -42,6 +42,13 @@ body{background:radial-gradient(ellipse at 12% 4%,rgba(124,58,237,.19),transpare
 .profile-card::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--green))}
 .contact{background:linear-gradient(115deg,rgba(124,58,237,.20),rgba(8,145,178,.12) 65%,#151c32)}
 @media(prefers-reduced-motion:reduce){body{background-attachment:scroll}.chip,.project,.btn{transition:none!important}}
+
+/* Cursor glow: desktop pointer devices only */
+.cursor-glow{position:fixed;left:0;top:0;width:30px;height:30px;border:1px solid rgba(103,232,249,.75);border-radius:50%;pointer-events:none;z-index:9999;opacity:0;transform:translate(-50%,-50%) scale(.75);background:radial-gradient(circle,rgba(167,139,250,.15),rgba(103,232,249,.04) 65%,transparent 70%);box-shadow:0 0 22px rgba(103,232,249,.12);transition:width .18s ease,height .18s ease,opacity .2s ease,border-color .18s ease,background .18s ease}
+.cursor-glow::after{content:"";position:absolute;width:4px;height:4px;left:50%;top:50%;border-radius:50%;background:var(--accent2);transform:translate(-50%,-50%);box-shadow:0 0 10px var(--accent2)}
+.cursor-glow.is-active{width:48px;height:48px;border-color:rgba(167,139,250,.95);background:radial-gradient(circle,rgba(167,139,250,.22),rgba(103,232,249,.07) 68%,transparent 72%);box-shadow:0 0 28px rgba(167,139,250,.2)}
+@media(hover:none),(pointer:coarse){.cursor-glow{display:none!important}}
+@media(prefers-reduced-motion:reduce){.cursor-glow{display:none!important}}
 </style>
 </head>
 <body>
@@ -96,6 +103,23 @@ body{background:radial-gradient(ellipse at 12% 4%,rgba(124,58,237,.19),transpare
     });
   }, {threshold:0.12, rootMargin:'0px 0px -35px 0px'});
   targets.forEach(function(el){observer.observe(el);});
+
+  if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var cursor = document.createElement('div');
+    cursor.className = 'cursor-glow';
+    cursor.setAttribute('aria-hidden','true');
+    document.body.appendChild(cursor);
+    var cursorVisible = false;
+    document.addEventListener('mousemove', function(e) {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      if (!cursorVisible) { cursor.style.opacity = '1'; cursorVisible = true; }
+      var target = e.target && e.target.closest ? e.target.closest('a,button,input,textarea,select,.project,.chip') : null;
+      cursor.classList.toggle('is-active', !!target);
+    });
+    document.addEventListener('mouseleave', function() { cursor.style.opacity = '0'; cursorVisible = false; });
+    document.addEventListener('mouseenter', function() { cursor.style.opacity = '1'; cursorVisible = true; });
+  }
 })();
 </script>
 </body>
