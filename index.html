@@ -26,6 +26,22 @@
 .js-motion .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
 .js-motion .reveal.is-visible{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}.js-motion .reveal{opacity:1;transform:none}}
+
+/* Refined colour accents and subtle animated ambient glow */
+body{background:radial-gradient(ellipse at 12% 4%,rgba(124,58,237,.19),transparent 34%),radial-gradient(ellipse at 92% 32%,rgba(6,182,212,.10),transparent 30%),var(--bg);background-attachment:fixed}
+.hero h1 span{background:linear-gradient(100deg,#a78bfa 5%,#67e8f9 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent2);margin:0 9px 1px 0;box-shadow:0 0 14px var(--accent2)}
+.section-head h2{position:relative}
+.section-head h2::after{content:"";display:block;width:58px;height:3px;border-radius:9px;margin-top:10px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.chip{transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.chip:hover{transform:translateY(-2px);border-color:var(--accent2);background:#202b49}
+.project{position:relative;overflow:hidden}
+.project::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--accent),var(--accent2));opacity:0;transition:opacity .25s ease}
+.project:hover::before{opacity:1}
+.profile-card{position:relative;overflow:hidden}
+.profile-card::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--green))}
+.contact{background:linear-gradient(115deg,rgba(124,58,237,.20),rgba(8,145,178,.12) 65%,#151c32)}
+@media(prefers-reduced-motion:reduce){body{background-attachment:scroll}.chip,.project,.btn{transition:none!important}}
 </style>
 </head>
 <body>
@@ -61,7 +77,8 @@
 
 <script>
 (function(){
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
   document.documentElement.classList.add('js-motion');
   var targets = document.querySelectorAll('section .section-head, section .panel, .project, .contact-layout');
   targets.forEach(function(el){el.classList.add('reveal');});
@@ -73,7 +90,8 @@
     entries.forEach(function(entry){
       if(entry.isIntersecting){
         entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('is-visible');
       }
     });
   }, {threshold:0.12, rootMargin:'0px 0px -35px 0px'});
