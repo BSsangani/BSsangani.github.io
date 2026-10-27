@@ -90,6 +90,52 @@ nav a{transition:color .18s ease}
 @media(max-width:580px){.impact-strip{grid-template-columns:1fr;margin:0 auto 16px}.impact-item{padding:13px 16px}.project-toolbar{align-items:flex-start}.project-filters{gap:6px}.filter-btn{padding:7px 10px;font-size:.8rem}.to-top{right:14px;bottom:14px}}
 @media(prefers-reduced-motion:reduce){.to-top,.filter-btn,.btn,nav a{transition:none!important}}
 
+
+/* Purple portfolio theme inspired by the supplied reference design */
+:root{--bg:#09070d;--panel:#130e1a;--panel2:#1b1026;--text:#f8f5ff;--muted:#c1b7ce;--line:#382348;--accent:#c084fc;--accent2:#a855f7;--green:#86efac}
+body{background:radial-gradient(ellipse at 12% 3%,rgba(168,85,247,.18),transparent 34%),radial-gradient(ellipse at 90% 40%,rgba(124,58,237,.10),transparent 32%),var(--bg);background-attachment:fixed}
+.nav{background:rgba(9,7,13,.94);border-bottom-color:#4c1d68}
+nav a:hover,.text-link:hover,.project-link:hover{color:#d8b4fe}
+.eyebrow{color:#d8b4fe}
+.eyebrow::before{background:#c084fc;box-shadow:0 0 14px #a855f7}
+.hero h1 span{background:linear-gradient(135deg,#fff 0%,#d8b4fe 48%,#a855f7 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn.primary{background:linear-gradient(135deg,#7e22ce,#a855f7);border-color:#a855f7;color:#fff}
+.btn:not(.primary):hover{border-color:#c084fc;background:rgba(168,85,247,.10)}
+.profile-card{background:linear-gradient(145deg,#1c1128,#100b16);border-color:#4c1d68;box-shadow:0 24px 70px rgba(0,0,0,.32)}
+.profile-card::before{background:linear-gradient(90deg,#7e22ce,#c084fc,#a855f7)}
+.avatar{background:#eeeaf5}
+section{position:relative}
+section:nth-of-type(even){background:rgba(168,85,247,.025)}
+.section-head h2::after{background:linear-gradient(90deg,#7e22ce,#c084fc,#a855f7)}
+.panel{background:linear-gradient(145deg,rgba(27,16,38,.96),rgba(19,14,26,.96));border-color:#382348}
+.panel:hover{border-color:#7e22ce;box-shadow:0 14px 34px rgba(88,28,135,.16)}
+.chip{background:rgba(168,85,247,.08);border-color:#4c1d68;color:#f3e8ff}
+.chip:hover{border-color:#c084fc;background:rgba(168,85,247,.17)}
+.project{background:linear-gradient(155deg,#1b1026,#100b16);border-color:#382348}
+.project .category{color:#d8b4fe}
+.project::before{background:linear-gradient(180deg,#7e22ce,#d8b4fe)}
+.project:hover{border-color:#a855f7;box-shadow:0 18px 38px rgba(88,28,135,.2)}
+.project .tags span{background:#100b16;border-color:#382348;color:#e9d5ff}
+.project-link{color:#d8b4fe}
+.filter-btn{background:#130e1a;border-color:#382348}
+.filter-btn:hover,.filter-btn[aria-pressed="true"]{border-color:#c084fc;background:rgba(168,85,247,.16)}
+.contact{background:linear-gradient(115deg,rgba(126,34,206,.22),rgba(88,28,135,.12),#130e1a);border-color:#4c1d68}
+.contact-icon{background:rgba(168,85,247,.13);color:#d8b4fe}
+.form-row input,.form-row textarea{background:#0d0912;border-color:#4c1d68}
+.form-row input:focus,.form-row textarea:focus{border-color:#c084fc;box-shadow:0 0 0 3px rgba(168,85,247,.18)}
+.contact-detail a,.footer a{color:#d8b4fe}
+.availability{border-color:rgba(192,132,252,.28);background:rgba(168,85,247,.08);color:#e9d5ff}
+.availability::before{background:#c084fc;box-shadow:0 0 0 4px rgba(168,85,247,.13)}
+.impact-item{background:linear-gradient(145deg,rgba(27,16,38,.94),rgba(19,14,26,.94));border-color:#382348}
+.scroll-progress{background:linear-gradient(90deg,#7e22ce,#c084fc,#a855f7);box-shadow:0 0 12px rgba(168,85,247,.35)}
+.to-top{background:rgba(19,14,26,.94);border-color:#4c1d68}
+.to-top:hover{border-color:#c084fc;color:#d8b4fe}
+.cursor-glow{border-color:rgba(192,132,252,.75);background:radial-gradient(circle,rgba(168,85,247,.15),rgba(192,132,252,.04) 65%,transparent 70%)}
+.cursor-glow::after{background:#c084fc;box-shadow:0 0 10px #a855f7}
+.cursor-glow.is-active{border-color:rgba(216,180,254,.95);background:radial-gradient(circle,rgba(168,85,247,.22),rgba(192,132,252,.07) 68%,transparent 72%);box-shadow:0 0 28px rgba(168,85,247,.2)}
+::selection{background:rgba(168,85,247,.34);color:#fff}
+@media(max-width:580px){.profile-card{padding:0}.avatar{width:100%;height:auto;aspect-ratio:1/1}}
+
 </style>
 </head>
 <body>
