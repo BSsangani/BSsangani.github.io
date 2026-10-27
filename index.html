@@ -136,6 +136,23 @@ section:nth-of-type(even){background:rgba(168,85,247,.025)}
 ::selection{background:rgba(168,85,247,.34);color:#fff}
 @media(max-width:580px){.profile-card{padding:0}.avatar{width:100%;height:auto;aspect-ratio:1/1}}
 
+
+/* Final button and colour polish */
+:root{--accent:#b76cf6;--accent2:#d8b4fe}
+.btn{position:relative;isolation:isolate;gap:8px;border-radius:10px;padding:12px 18px;font-size:.92rem;font-weight:750;letter-spacing:.005em;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease,color .2s ease}
+.btn.primary{background:linear-gradient(120deg,#7e22ce 0%,#9333ea 48%,#c084fc 100%);border:1px solid rgba(216,180,254,.7);color:#fff;box-shadow:0 8px 22px rgba(126,34,206,.22)}
+.btn.primary:hover{background:linear-gradient(120deg,#6b21a8 0%,#7e22ce 45%,#a855f7 100%);border-color:#e9d5ff;box-shadow:0 10px 28px rgba(168,85,247,.3);transform:translateY(-3px)}
+.btn:not(.primary){border-color:#5b3470;background:rgba(30,17,42,.7);color:#f3e8ff}
+.btn:not(.primary):hover{border-color:#d8b4fe;background:rgba(168,85,247,.14);color:#fff;box-shadow:0 8px 22px rgba(126,34,206,.14);transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.985)}
+.btn:focus-visible,.filter-btn:focus-visible{outline:2px solid #e9d5ff;outline-offset:3px}
+.filter-btn{border-radius:10px}
+.project-link{display:inline-flex;align-items:center;gap:6px;font-weight:750}
+.social-links .btn{min-height:40px}
+.to-top{border-radius:12px}
+@media(max-width:580px){.hero .actions{display:grid;grid-template-columns:1fr}.hero .actions .btn{width:100%}.contact-form .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.btn{transition:none!important}}
+
 </style>
 </head>
 <body>
